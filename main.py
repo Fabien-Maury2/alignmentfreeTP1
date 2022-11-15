@@ -4,13 +4,20 @@ from kmers import stream_kmers, kmer2str
 
 
 def similarity(A, inter, B):
-    # --- To complete ---
-    pass
+    simB = len(inter) / (len(B) + len(inter))
+    simA = len(inter) / (len(A) + len(inter))
+    return((simA, simB))
 
 
 def jaccard(A, inter, B):
-    # --- To complete ---
-    pass
+    r = len(inter) / (len(A) + len(B) + len(inter))
+    return(r)
+
+def shared_kmers(a,b,k):
+    ak = stream_kmers(a, k)
+    bk = stream_kmers(b, k)
+    inter = list(set(ak) & set(bk))
+    return([ak, bk, inter])
 
 
 
@@ -25,5 +32,5 @@ if __name__ == "__main__":
             
             # --- Complete here ---
 
-            A, inter, B = my_method(indexes[filenames[i]], files[filenames[j]], k)
+            A, inter, B = shared_kmers(files[filenames[i]], files[filenames[j]], k)
             print(filenames[i], filenames[j], jaccard(A, inter, B), similarity(A, inter, B))
