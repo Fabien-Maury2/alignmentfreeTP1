@@ -13,7 +13,7 @@ def jaccard(A, inter, B):
     r = len(inter) / (len(A) + len(B) + len(inter))
     return(r)
 
-def shared_kmers(a,b,k):
+def shared_kmers(a,b,k): # returns a list containing 2 lists of all kmers of length k contained in file and b, respectively; and a list containing the shared elements of the 2 former
     ak = stream_kmers(a, k)
     bk = stream_kmers(b, k)
     inter = list(set(ak) & set(bk))
